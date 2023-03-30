@@ -16,7 +16,7 @@ public class App {
 
     public static Javalin getApp() {
         Javalin app = Javalin.create(config -> {
-           config.enableDevLogging();
+            config.enableDevLogging();
         });
         addRoutes(app);
         return app;

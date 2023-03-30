@@ -54,3 +54,6 @@ testlogger {
 jacoco {
     toolVersion = "0.8.7"
 }
+
+task stage(dependsOn: ['clean', 'installDist'])
+installDist.mustRunAfter clean

@@ -15,26 +15,19 @@ public class Url extends Model {
     private Instant createdAt;
 
 
-    public Url(String name) {
-        this.name = name;
+    public Url(String inputName) {
+        this.name = inputName;
     }
 
-    public int getId() {
+    public final int getId() {
         return id;
     }
 
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
-    public Instant getCreatedAt() {
+    public final Instant getCreatedAt() {
         return createdAt;
     }
 }
-
-
-
-//    В нашем приложении мы будем добавлять в базу данных другие сайты,
-//        а точнее их адреса. Для этого создайте модель Url со свойствами id, name, createdAt.
-//        Свойство id — идентификатор урла, должно генерироваться автоматически.
-//        Поле createdAt отражает дату и время добавления урла на сайт и также должно заполняться автоматически

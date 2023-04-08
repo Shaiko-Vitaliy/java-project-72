@@ -1,8 +1,6 @@
-# Настройки ORM
 datasource:
   default: ${APP_ENV}
 
-  # Задаём базу данных, к которой будет происходить подключение
   development:
     username: ""
     password: ""
@@ -13,26 +11,18 @@ datasource:
     password: ${{Postgres:PGPASSWORD}}
     url: jdbc:postgresql://${{Postgres.PGHOST}}:${{Postgres.PGPORT}}/${{Postgres.PGDATABASE}}
 
-#  production:
-#    username: ""
-#    password: ""
-#    url: "jdbc:postgresql:./hexletpostgress"
-
-# Заполняем базу данных первоначальными данными
 ebean:
   development:
-    run: true
-    generate: true
+    migration:
+      run: true
+      generate: true
   production:
     migration:
       run: true
-
-
-
-
-
-#
-##  production:
-##    username: postgres
-##    password: 02XUoyirr6gPRtTLn4eS
-##    url: jdbc:postgresql://postgres:02XUoyirr6gPRtTLn4eS@containers-us-west-133.railway.app:6166/railway
+#ebean:
+#  development:
+#    run: true
+#    generate: true
+#  production:
+#    migration:
+#      run: true

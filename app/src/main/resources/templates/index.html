@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/application.html}">
+
+<head>
+    <title>Анализатор страниц</title>
+</head>
+<section layout:fragment="content">
+    <main class="flex-grow-1">
+        <div>
+            <h1>Анализатор страниц</h1>
+            <h4>Бесплатно проверяйте сайты на SEO пригодность</h4>
+            <form method="post" enctype="application/x-www-form-urlencoded" action="/urls">
+                <label><input class="form-control" name="url" type="url"></label>
+                <button class="btn btn-primary" type="submit">Проверить</button>
+            </form>
+            <p>Пример: https://www.example.com</p>
+        </div>
+    </main>
+</section>

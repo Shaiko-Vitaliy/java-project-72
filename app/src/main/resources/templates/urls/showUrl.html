@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/application.html}">
+
+<head>
+    <title>Анализатор страниц</title>
+</head>
+<section layout:fragment="content">
+    <main class="flex-grow-1">
+        <div>
+            <h1 >Сайт <span th:text="${url.getUrl()}"></span></h1>
+<!--            <p>Name: <span th:text="${session.user.firstName}">Sebastian</span>.</p>-->
+            <table>
+                <tbody>
+                <tr>
+                    <td>ID</td>
+                    <td th:text="${url.getId()}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Имя</td>
+                    <td th:text="${url.getUrl()}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Дата создания</td>
+                    <td th:text="${#temporals.format(url.getCreatedAt, 'dd/MM/yyyy HH:mm')}">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+                <h1>Проверки</h1>
+                <form method="post" enctype="application/x-www-form-urlencoded" action="urls/1/checks">
+                    <button class="btn btn-primary" type="submit">Запустить проверку</button>
+                </form>
+            <table>
+
+            </table>
+        </div>
+    </main>
+</section>

@@ -1,0 +1,45 @@
+package hexlet.code.model;
+
+import io.ebean.Model;
+import io.ebean.annotation.WhenCreated;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.time.Instant;
+
+@Entity
+public class Url extends Model {
+    @Id
+    private int id;
+    private String url;
+//    @WhenCreated
+//    private Instant createdAt;
+private int createdAt;
+    private int responceCode;
+
+
+    public Url(String inputUrl, int creat, int res) {
+        this.url = inputUrl;
+        this.createdAt = creat;
+        this.responceCode = res;
+    }
+
+    public final int getId() {
+        return id;
+    }
+
+    public final String getUrl() {
+        return url;
+    }
+
+//    public final Instant getCreatedAt() {
+//        return createdAt;
+//    }
+
+    public final int getCreatedAt() {
+        return createdAt;
+    }
+
+    public final int getResponceCode() {
+        return responceCode;
+    }
+}

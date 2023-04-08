@@ -5,6 +5,7 @@ plugins {
     id 'com.adarshr.test-logger' version '3.1.0'
     id 'application'
     id 'io.ebean' version '13.6.5'
+    id 'com.github.ben-manes.versions' version '0.39.0'
 }
 
 group = 'io.hexlet'
@@ -31,6 +32,9 @@ dependencies {
 
     implementation 'org.slf4j:slf4j-simple:1.7.36'
 
+    implementation 'commons-validator:commons-validator:1.7'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
@@ -45,6 +49,8 @@ dependencies {
     implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.5'
     implementation 'javax.activation:activation:1.1.1'
     implementation 'javax.persistence:javax.persistence-api:2.2'
+    testImplementation 'io.ebean:ebean-test:12.11.5'
+    testImplementation 'com.konghq:unirest-java:3.13.0'
 }
 
 run {
@@ -74,11 +80,11 @@ jacoco {
     toolVersion = "0.8.7"
 }
 
-task stage(dependsOn: ['clean', 'installDist']) {
-    installDist.mustRunAfter clean
-}
-
 task generateMigrations(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     mainClass = 'hexlet.code.MigrationGenerator'
+}
+
+task stage(dependsOn: ['clean', 'installDist']) {
+    installDist.mustRunAfter clean
 }

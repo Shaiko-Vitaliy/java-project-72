@@ -1,20 +1,30 @@
+# Настройки ORM
 datasource:
   default: ${APP_ENV}
+  # Задаём базу данных, к которой будет происходить подключение
   development:
-    username: vitaliy25
-    password: cv_ER2_r
-    url: jdbc:h2:./data_base
+    username: ""
+    password: ""
+    url: "jdbc:h2:./hexlet"
 
   production:
     username: ${{Postgres:PGUSER}}
     password: ${{Postgres:PGPASSWORD}}
     url: ${{Postgres:DATABASE_URL}}
 
+# Заполняем базу данных первоначальными данными
 ebean:
-  migration:
-    run: true
+#    ddl:
 
-#  production:
-#    username: postgres
-#    password: 02XUoyirr6gPRtTLn4eS
-#    url: jdbc:postgresql://postgres:02XUoyirr6gPRtTLn4eS@containers-us-west-133.railway.app:6166/railway
+      run: true
+      generate: true
+
+
+
+
+
+#
+##  production:
+##    username: postgres
+##    password: 02XUoyirr6gPRtTLn4eS
+##    url: jdbc:postgresql://postgres:02XUoyirr6gPRtTLn4eS@containers-us-west-133.railway.app:6166/railway

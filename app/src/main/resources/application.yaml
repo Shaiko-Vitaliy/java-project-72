@@ -7,9 +7,9 @@ datasource:
     url: "jdbc:h2:./hexlet"
 
   production:
-    username: ${{Postgres.PGUSER}}
-    password: ${{Postgres:PGPASSWORD}}
-    url: jdbc:postgresql://${{Postgres.PGHOST}}:${{Postgres.PGPORT}}/${{Postgres.PGDATABASE}}
+    username: ${Postgres.PGUSER}
+    password: ${Postgres:PGPASSWORD}
+    url: jdbc:postgresql://${Postgres.PGHOST}:${Postgres.PGPORT}/${Postgres.PGDATABASE}
 
 ebean:
   development:

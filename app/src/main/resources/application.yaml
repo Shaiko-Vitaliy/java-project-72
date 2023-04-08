@@ -1,6 +1,7 @@
 # Настройки ORM
 datasource:
   default: ${APP_ENV}
+
   # Задаём базу данных, к которой будет происходить подключение
   development:
     username: ""
@@ -8,16 +9,23 @@ datasource:
     url: "jdbc:h2:./hexlet"
 
   production:
-    username: ${{Postgres:PGUSER}}
+    username: ${{Postgres.PGUSER}}
     password: ${{Postgres:PGPASSWORD}}
-    url: ${{Postgres:DATABASE_URL}}
+    url: jdbc:postgresql://${{Postgres.PGHOST}}:${{Postgres.PGPORT}}/${{Postgres.PGDATABASE}}
+
+#  production:
+#    username: ""
+#    password: ""
+#    url: "jdbc:postgresql:./hexletpostgress"
 
 # Заполняем базу данных первоначальными данными
 ebean:
-#    ddl:
-
+  development:
+    run: true
+    generate: true
+  production:
+    migration:
       run: true
-      generate: true
 
 
 

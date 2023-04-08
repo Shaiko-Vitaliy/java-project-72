@@ -47,7 +47,7 @@ public class UrlsController {
         if (!errors.isEmpty()) {
             ctx.status(STATUS_INCORRECT_URL);
             ctx.sessionAttribute("flash", "Некорректный URL");
-            ctx.render("/urls/index.html");
+            ctx.redirect("/");
             return;
         }
         URL inputUrl = new URL(inputContent);

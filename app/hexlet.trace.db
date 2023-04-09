@@ -1,0 +1,8 @@
+2023-04-09 09:03:55 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "URL_MODEL" не найдена
+Table "URL_MODEL" not found; SQL statement:
+select t0.id, t0.url, t0.responce_code, t0.created_at, t0.updated_at from url_model t0 order by t0.id limit 10 [42102-200]
+2023-04-09 09:03:58 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "URL_MODEL" не найдена
+Table "URL_MODEL" not found; SQL statement:
+select t0.id, t0.url, t0.responce_code, t0.created_at, t0.updated_at from url_model t0 where t0.url = ? [42102-200]

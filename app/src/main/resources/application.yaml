@@ -24,7 +24,6 @@ ebean:
   production:
     migration:
       run: true
-      generate: true
 
 
 

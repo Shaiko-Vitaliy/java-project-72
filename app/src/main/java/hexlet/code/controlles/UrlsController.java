@@ -47,6 +47,7 @@ public class UrlsController {
         if (!errors.isEmpty()) {
             ctx.status(STATUS_INCORRECT_URL);
             ctx.sessionAttribute("flash", "Некорректный URL");
+            ctx.sessionAttribute("alert", "alert alert-danger");
             ctx.redirect("/");
             return;
         }
@@ -59,12 +60,14 @@ public class UrlsController {
         if (isCorrectUrl != null) {
             ctx.status(STATUS_INCORRECT_URL);
             ctx.sessionAttribute("flash", "Страница уже существует");
+            ctx.sessionAttribute("alert", "alert alert-info");
             ctx.redirect("/urls");
             return;
         }
         UrlModel urlModel = new UrlModel(correctUrl, 1);
         urlModel.save();
-        ctx.attribute("flash", "Страница успешно добавлена");
+        ctx.sessionAttribute("flash", "Страница успешно добавлена");
+        ctx.sessionAttribute("alert", "alert alert-success");
         ctx.attribute("url", urlModel);
         ctx.redirect("/urls");
     };

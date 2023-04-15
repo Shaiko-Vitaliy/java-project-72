@@ -2,11 +2,10 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layouts/application.html}">
 
-<head>
-    <title>Анализатор страниц</title>
-</head>
+<!--<head>-->
+<!--    <title>Анализатор страниц</title>-->
+<!--</head>-->
 <section layout:fragment="content">
-    <main class="flex-grow-1">
         <div>
             <h1 >Сайт <span th:text="${url.getUrl()}"></span></h1>
 <!--            <p>Name: <span th:text="${session.user.firstName}">Sebastian</span>.</p>-->
@@ -37,5 +36,4 @@
 
             </table>
         </div>
-    </main>
 </section>

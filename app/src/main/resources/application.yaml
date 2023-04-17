@@ -7,20 +7,14 @@ datasource:
     url: "jdbc:h2:./hexlet"
 
   production:
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
-    url: ${DB_URL}
-#
-#    production:
-#      username: "postgres"
-#      password: "oJ0ecYuZgVQtlnrkh9y1"
-#      url: "jdbc:postgresql://containers-us-west-191.railway.app:6457/railway"
+    username: ${PGUSER}
+    password: ${PGPASSWORD}
+    url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
 
 ebean:
   development:
     migration:
       run: true
-#      generate: true
   production:
     migration:
       run: true

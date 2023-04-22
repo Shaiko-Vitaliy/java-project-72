@@ -2,9 +2,6 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layouts/application.html}">
 
-<!--<head>-->
-<!--    <title>Анализатор страниц</title>-->
-<!--</head>-->
 <section layout:fragment="content">
         <div>
             <h1>Сайты</h1>
@@ -23,8 +20,12 @@
                         <td>
                             <a th:text="*{getUrl()}" th:href="@{/urls/{id}(id=*{getId()})}"></a>
                         </td>
-                        <td th:text="${#temporals.format(url.getUpdatedAt(), 'dd/MM/yyyy HH:mm')}"></td>
-                        <td th:text="*{getResponceCode()}"></td>
+                        <td th:text="${#temporals.format(url.getLastUrlChecks().getCreatedAt, 'dd/MM/yyyy HH:mm')}"
+                            th:if="${not #lists.isEmpty(url.getUrlChecks())}">
+                        <td th:if="${#lists.isEmpty(url.getUrlChecks())}"></td>
+                        <td th:text="*{getLastUrlChecks().getStatusCode()}"
+                            th:if="${not #lists.isEmpty(url.getUrlChecks())}"></td>
+                        <td th:if="${#lists.isEmpty(url.getUrlChecks())}"></td>
                     </tr>
                 </tbody>
             </table>
@@ -32,13 +33,13 @@
                 <nav>
                     <ul class="pagination justify-content-center">
                         <li class="page-item">
-                            <a class="page-link" th:href="@{/articles(page=(${page < 2}) ? 1 : (${page - 1}))}">Prev</a>
+                            <a class="page-link" th:href="@{/urls(page=(${page < 2}) ? 1 : (${page - 1}))}">Prev</a>
                         </li>
                         <li class="page-item">
-                            <a th:text="${page}" class="page-link" th:href="@{/articles(page=${page})}"></a>
+                            <a th:text="${page}" class="page-link" th:href="@{/urls(page=${page})}"></a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" th:href="@{/articles(page=${page + 1})}">Next</a>
+                            <a class="page-link" th:href="@{/urls(page=${page + 1})}">Next</a>
                         </li>
                     </ul>
                 </nav>

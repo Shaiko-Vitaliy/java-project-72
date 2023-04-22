@@ -2,15 +2,15 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/application.html}">
 
-<!--<head>-->
-<!--    <title>Анализатор страниц</title>-->
-<!--</head>-->
 <section layout:fragment="content">
         <div>
             <h1>Анализатор страниц</h1>
             <h4>Бесплатно проверяйте сайты на SEO пригодность</h4>
             <form method="post" enctype="application/x-www-form-urlencoded" action="/urls">
-                <label><input class="form-control" name="url" type="url"></label>
+                <input id="url-input" autofocus="" type="text" required="" name="url" aria-label="url"
+                       class="form-control w-100" placeholder="ссылка RSS" autocomplete="off">
+<!--                <label><input class="form-control" name="url" type="url"></label>-->
+                <label for="url-input">Ссылка</label>
                 <button class="btn btn-primary" type="submit">Проверить</button>
             </form>
             <p>Пример: https://www.example.com</p>

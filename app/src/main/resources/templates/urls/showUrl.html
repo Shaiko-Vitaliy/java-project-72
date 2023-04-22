@@ -2,14 +2,11 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layouts/application.html}">
 
-<!--<head>-->
-<!--    <title>Анализатор страниц</title>-->
-<!--</head>-->
 <section layout:fragment="content">
         <div>
             <h1 >Сайт <span th:text="${url.getUrl()}"></span></h1>
 <!--            <p>Name: <span th:text="${session.user.firstName}">Sebastian</span>.</p>-->
-            <table>
+            <table class="table table-bordered table-hover">
                 <tbody>
                 <tr>
                     <td>ID</td>
@@ -29,11 +26,31 @@
                 </tbody>
             </table>
                 <h1>Проверки</h1>
-                <form method="post" enctype="application/x-www-form-urlencoded" action="urls/1/checks">
+                <form method="post" enctype="application/x-www-form-urlencoded" th:action="@{/urls/{id}/checks(id=${url.getId()})}">
                     <button class="btn btn-primary" type="submit">Запустить проверку</button>
                 </form>
-            <table>
-
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Код ответа</th>
+                    <th>title</th>
+                    <th>h1</th>
+                    <th>description</th>
+                    <th>Дата проверки</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="check : ${checks}" th:object="${check}">
+                    <td th:text="*{getId()}"></td>
+                    <td th:text="*{getStatusCode()}"></td>
+                    <td th:text="*{getTitle()}"></td>
+                    <td th:text="*{getH1()}"></td>
+                    <td th:text="*{getDescription()}"></td>
+                    <td th:text="${#temporals.format(check.getCreatedAt(), 'dd/MM/yyyy HH:mm')}"></td>
+<!--                    <td th:text="*{getCreatedAt()}"></td>-->
+                </tr>
+                </tbody>
             </table>
         </div>
 </section>

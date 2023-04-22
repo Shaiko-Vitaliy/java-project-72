@@ -9,8 +9,6 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
-import java.io.IOException;
-
 import static io.javalin.apibuilder.ApiBuilder.path;
 import static io.javalin.apibuilder.ApiBuilder.post;
 import static io.javalin.apibuilder.ApiBuilder.get;
@@ -41,7 +39,7 @@ public class App {
                 path("{id}", () -> {
                     get(UrlsController.SHOW_URL);
                     path("/checks", () -> {
-                        post(UrlsController.CHECKS_URL);
+                        post(UrlsController.CHECK_URL);
                     });
                 });
             });
@@ -59,7 +57,7 @@ public class App {
         return templateEngine;
     }
 
-    public static Javalin getApp() throws IOException {
+    public static Javalin getApp() {
 
         Javalin app = Javalin.create(config -> {
             if (!isProduction()) {
@@ -75,7 +73,7 @@ public class App {
 
         return app;
     }
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Javalin app = getApp();
         app.start(getPort());
     }

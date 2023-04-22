@@ -3,35 +3,35 @@ package hexlet.code.model;
 import io.ebean.Model;
 import io.ebean.annotation.NotNull;
 import io.ebean.annotation.WhenCreated;
-import io.ebean.annotation.WhenModified;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 @Entity
 public class UrlModel extends Model {
 
     @Id
-    private int id;
+    @GeneratedValue
+    private Long id;
     @NotNull
     private final String url;
-    //    @WhenCreated
-//    private Instant createdAt;
     @WhenCreated
     private Instant createdAt;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<UrlCheck> urlChecks;
 
-    @WhenModified
-    private Instant updatedAt;
-    @NotNull
-    private int responceCode;
-
-
-    public UrlModel(String inputUrl, int res) {
+    public UrlModel(String inputUrl) {
         this.url = inputUrl;
-        this.responceCode = res;
     }
 
-    public final int getId() {
+    public final Long getId() {
         return id;
     }
 
@@ -43,11 +43,13 @@ public class UrlModel extends Model {
         return createdAt;
     }
 
-    public final Instant getUpdatedAt() {
-        return updatedAt;
+    public List<UrlCheck> getUrlChecks() {
+        return urlChecks;
     }
 
-    public final int getResponceCode() {
-        return responceCode;
+    public UrlCheck getLastUrlChecks() {
+        List<UrlCheck> tempList = new ArrayList<>(urlChecks);
+        Collections.reverse(tempList);
+        return tempList.get(0);
     }
 }

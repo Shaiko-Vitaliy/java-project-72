@@ -1,12 +1,17 @@
 package hexlet.code;
 
+import hexlet.code.model.UrlCheck;
 import hexlet.code.model.UrlModel;
+import hexlet.code.model.query.QUrlCheck;
 import hexlet.code.model.query.QUrlModel;
 import io.ebean.DB;
 import io.ebean.Database;
 import io.javalin.Javalin;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
+import okhttp3.mockwebserver.MockResponse;
+import okhttp3.mockwebserver.MockWebServer;
+import org.junit.Before;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,6 +19,9 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -23,6 +31,7 @@ public class TestApp {
     private static Database database;
     private static final int CODE_200 = 200;
     private static final int CODE_302 = 302;
+
 
     @BeforeAll
     public static void beforeAll() throws IOException {
@@ -139,6 +148,54 @@ public class TestApp {
 
             assertThat(response.getStatus()).isEqualTo(CODE_200);
             assertThat(body).contains("https://habr.com");
+        }
+
+        @Test
+        void testCheck() throws IOException {
+            var path = "src/test/resources/fixtures/index.html";
+            var mockServer = new MockWebServer();
+            var content = Files.readString(Paths.get(path));
+            var mockedResponse = new MockResponse().setBody(content);
+            mockServer.enqueue(mockedResponse);
+            mockServer.start();
+            String sampleUrl = mockServer.url("/").toString();
+            HttpResponse<String> response = Unirest
+                    .post(baseUrl + "/urls/")
+                    .field("url", sampleUrl)
+                    .asString();
+
+            UrlModel url = new QUrlModel()
+                    .url.equalTo(sampleUrl.substring(0, sampleUrl.length() - 1))
+                    .findOne();
+            assertThat(url).isNotNull();
+
+            HttpResponse<String> response1 = Unirest
+                    .post(baseUrl + "/urls/" + url.getId() + "/checks")
+                    .asString();
+
+            assertThat(response1).isNotNull();
+
+            HttpResponse<String> response2 = Unirest
+                    .get(baseUrl + "/urls/" + url.getId())
+                    .asString();
+
+            assertThat(response2).isNotNull();
+            assertThat(response2.getStatus()).isEqualTo(CODE_200);
+
+            UrlCheck check = new QUrlCheck()
+                    .findList().get(0);
+
+            assertThat(check).isNotNull();
+            assertThat(check.getUrl().getId()).isEqualTo(url.getId());
+//            System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+//            System.out.println(response2.getBody());
+//            assertThat(response2.getBody()).contains("correct title");
+//            assertThat(response2.getBody()).contains("correct description");
+//            assertThat(response2.getBody()).contains("correct header");
+            assertThat(response2.getBody()).contains("title");
+            assertThat(response2.getBody()).contains("description");
+            assertThat(response2.getBody()).contains("h1");
+            mockServer.shutdown();
         }
     }
 }

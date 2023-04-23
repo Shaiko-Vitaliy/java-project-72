@@ -34,31 +34,31 @@ public class UrlCheck extends Model {
         this.url = inputUrl;
     }
 
-    public Long getId() {
+    public final Long getId() {
         return id;
     }
 
-    public int getStatusCode() {
+    public final int getStatusCode() {
         return statusCode;
     }
 
-    public Instant getCreatedAt() {
+    public final Instant getCreatedAt() {
         return createdAt;
     }
 
-    public String getTitle() {
+    public final String getTitle() {
         return title;
     }
 
-    public String getH1() {
+    public final String getH1() {
         return h1;
     }
 
-    public String getDescription() {
+    public final String getDescription() {
         return description;
     }
 
-    public UrlModel getUrl() {
+    public final UrlModel getUrl() {
         return url;
     }
 }

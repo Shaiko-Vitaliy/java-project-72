@@ -4,22 +4,20 @@ import hexlet.code.model.UrlCheck;
 import hexlet.code.model.UrlModel;
 import hexlet.code.model.query.QUrlModel;
 import io.ebean.PagedList;
-import io.javalin.core.validation.JavalinValidation;
-import io.javalin.core.validation.ValidationError;
-import io.javalin.core.validation.Validator;
 import io.javalin.http.Handler;
 import io.javalin.http.NotFoundResponse;
 import kong.unirest.UnirestException;
-import org.apache.commons.validator.routines.UrlValidator;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.IntStream;
 
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 
 public class UrlsController {
@@ -35,11 +33,16 @@ public class UrlsController {
                 .orderBy()
                 .id.asc()
                 .findPagedList();
-
         List<UrlModel> urls = pagedUrl.getList();
-
+        int currentPage = pagedUrl.getTotalPageCount();
+        List<Integer> pages = IntStream
+                .range(1, currentPage + 1)
+                .boxed()
+                .toList();
         ctx.attribute("urls", urls);
         ctx.attribute("page", page);
+        ctx.attribute("pages", pages);
+        ctx.attribute("currentPage", currentPage);
         ctx.render("/urls/index.html");
     };
 
@@ -48,25 +51,13 @@ public class UrlsController {
         assert inputContent != null;
         inputContent = inputContent.strip();
         var correctUrl = getNormalizedUrl(inputContent);
-//        URL inputUrl;
-//        inputUrl = new URL(inputContent);
-//        var port = inputUrl.getPort() == -1 ? "" : ":" + inputUrl.getPort();
-//        var correctUrl = inputUrl.getProtocol() + "://" + inputUrl.getHost() + port;
-//        UrlValidator urlValidator = new UrlValidator();
-//        Validator<String> validator = ctx.formParamAsClass("url", String.class)
-//                .check(x -> urlValidator.isValid(x.strip()), "Некорректный URL");
-//        Map<String, List<ValidationError<? extends Object>>> errors = JavalinValidation.collectErrors(validator);
         if (correctUrl.isEmpty()) {
-//          if (inputContent.isEmpty()) {
             ctx.status(STATUS_INCORRECT_URL);
             ctx.sessionAttribute("flash", "Некорректный URL");
             ctx.sessionAttribute("alert", "alert alert-danger");
             ctx.redirect("/");
             return;
         }
-//        URL inputUrl = new URL(inputContent);
-//        var port = inputUrl.getPort() == -1 ? "" : ":" + inputUrl.getPort();
-//        var correctUrl = inputUrl.getProtocol() + "://" + inputUrl.getHost() + port;
         UrlModel isCorrectUrl = new QUrlModel()
                 .url.equalTo(correctUrl)
                 .findOne();
@@ -113,13 +104,14 @@ public class UrlsController {
             HttpResponse<String> response = Unirest
                     .get(url.getUrl())
                     .asString();
+            Document body = Jsoup.parse(response.getBody());
+            String title = body.title();
+            String h1 = body.selectFirst("h1") != null ? body.selectFirst("h1").text() : "";
+            String description = body.selectFirst("meta[name=description]") != null
+                    ? body.selectFirst("meta[name=description]").attr("content") : "";
             int statusCode = response.getStatus();
-            String title = "title";
-            String h1 = "h1";
-            String description = "description";
             UrlCheck check = new UrlCheck(statusCode, title, h1, description, url);
             check.save();
-
             ctx.sessionAttribute("flash", "Страница успешно проверена");
             ctx.sessionAttribute("alert", "alert alert-success");
         } catch (UnirestException e) {

@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'checkstyle'
     id 'jacoco'
-    id 'com.adarshr.test-logger' version '3.1.0'
+    id 'com.adarshr.test-logger' version '3.2.0'
     id 'application'
     id 'io.ebean' version '13.6.5'
     id 'com.github.ben-manes.versions' version '0.39.0'
@@ -21,6 +21,7 @@ application {
 
 compileJava {
     options.release = 17
+    options.encoding = 'UTF-8'
 }
 
 dependencies {
@@ -31,6 +32,7 @@ dependencies {
     implementation 'org.webjars:bootstrap:5.1.1'
 
     implementation 'org.slf4j:slf4j-simple:1.7.36'
+    implementation 'org.jsoup:jsoup:1.15.4'
 
     implementation 'commons-validator:commons-validator:1.7'
     implementation 'org.apache.commons:commons-lang3:3.12.0'
@@ -47,6 +49,8 @@ dependencies {
     testImplementation 'io.ebean:ebean-test:12.11.5'
 
     implementation 'com.h2database:h2:1.4.200'
+    implementation 'org.postgresql:postgresql:42.3.3'
+
     implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.5'
     implementation 'javax.activation:activation:1.1.1'
     implementation 'javax.persistence:javax.persistence-api:2.2'

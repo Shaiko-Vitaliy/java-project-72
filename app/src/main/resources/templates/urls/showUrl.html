@@ -3,10 +3,9 @@
       layout:decorate="~{layouts/application.html}">
 
 <section layout:fragment="content">
-        <div>
+        <div class="container-lg mt-5">
             <h1 >Сайт <span th:text="${url.getUrl()}"></span></h1>
-<!--            <p>Name: <span th:text="${session.user.firstName}">Sebastian</span>.</p>-->
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover mt-3">
                 <tbody>
                 <tr>
                     <td>ID</td>
@@ -25,19 +24,19 @@
                 </tr>
                 </tbody>
             </table>
-                <h1>Проверки</h1>
+                <h1 class="mt-5">Проверки</h1>
                 <form method="post" enctype="application/x-www-form-urlencoded" th:action="@{/urls/{id}/checks(id=${url.getId()})}">
                     <button class="btn btn-primary" type="submit">Запустить проверку</button>
                 </form>
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover mt-3">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Код ответа</th>
+                    <th class="col-1">ID</th>
+                    <th class="col-1">Код ответа</th>
                     <th>title</th>
                     <th>h1</th>
                     <th>description</th>
-                    <th>Дата проверки</th>
+                    <th class="col-2">Дата проверки</th>
                 </tr>
                 </thead>
                 <tbody>

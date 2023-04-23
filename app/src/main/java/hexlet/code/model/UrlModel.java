@@ -43,11 +43,11 @@ public class UrlModel extends Model {
         return createdAt;
     }
 
-    public List<UrlCheck> getUrlChecks() {
+    public final List<UrlCheck> getUrlChecks() {
         return urlChecks;
     }
 
-    public UrlCheck getLastUrlChecks() {
+    public final UrlCheck getLastUrlChecks() {
         List<UrlCheck> tempList = new ArrayList<>(urlChecks);
         Collections.reverse(tempList);
         return tempList.get(0);

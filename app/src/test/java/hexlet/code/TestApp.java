@@ -11,7 +11,6 @@ import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
-import org.junit.Before;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +19,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -34,7 +32,7 @@ public class TestApp {
 
 
     @BeforeAll
-    public static void beforeAll() throws IOException {
+    public static void beforeAll() {
         app = App.getApp();
         app.start(0);
         int port = app.port();
@@ -187,14 +185,10 @@ public class TestApp {
 
             assertThat(check).isNotNull();
             assertThat(check.getUrl().getId()).isEqualTo(url.getId());
-//            System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-//            System.out.println(response2.getBody());
-//            assertThat(response2.getBody()).contains("correct title");
-//            assertThat(response2.getBody()).contains("correct description");
-//            assertThat(response2.getBody()).contains("correct header");
-            assertThat(response2.getBody()).contains("title");
-            assertThat(response2.getBody()).contains("description");
-            assertThat(response2.getBody()).contains("h1");
+            System.out.println(response2.getBody());
+            assertThat(response2.getBody()).contains("correct title");
+            assertThat(response2.getBody()).contains("correct description");
+            assertThat(response2.getBody()).contains("correct header");
             mockServer.shutdown();
         }
     }

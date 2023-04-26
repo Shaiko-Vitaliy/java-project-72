@@ -1,4 +1,4 @@
-INSERT INTO url_model
+INSERT INTO url
   (url, created_at)
 VALUES
   ('https://habr.com', '2022-01-01 13:57:40'),

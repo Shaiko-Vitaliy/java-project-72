@@ -5,6 +5,7 @@ import io.ebean.annotation.NotNull;
 import io.ebean.annotation.WhenCreated;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,6 +24,7 @@ public class UrlModel extends Model {
     @GeneratedValue
     private Long id;
     @NotNull
+    @Column(name = "name")
     private final String url;
     @WhenCreated
     private Instant createdAt;

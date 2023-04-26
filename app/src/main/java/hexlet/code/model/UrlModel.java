@@ -4,17 +4,14 @@ import io.ebean.Model;
 import io.ebean.annotation.NotNull;
 import io.ebean.annotation.WhenCreated;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 @Entity
+@Table(name = "url")
 public class UrlModel extends Model {
 
     @Id

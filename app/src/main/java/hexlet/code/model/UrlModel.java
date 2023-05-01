@@ -7,7 +7,6 @@ import io.ebean.annotation.WhenCreated;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,7 +20,6 @@ import java.util.List;
 public class UrlModel extends Model {
 
     @Id
-    @GeneratedValue
     private Long id;
     @NotNull
     @Column(name = "name")

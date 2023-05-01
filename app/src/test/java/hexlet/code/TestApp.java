@@ -6,12 +6,14 @@ import hexlet.code.model.query.QUrlCheck;
 import hexlet.code.model.query.QUrlModel;
 import io.ebean.DB;
 import io.ebean.Database;
+import io.ebean.Transaction;
 import io.javalin.Javalin;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -26,9 +28,9 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class TestApp {
     private static Javalin app;
     private static String baseUrl;
-    private static Database database;
     private static final int CODE_200 = 200;
     private static final int CODE_302 = 302;
+    private static Transaction transaction;
 
 
     @BeforeAll
@@ -37,7 +39,7 @@ public class TestApp {
         app.start(0);
         int port = app.port();
         baseUrl = "http://localhost:" + port;
-        database = DB.getDefault();
+        Database database = DB.getDefault();
     }
     @AfterAll
     public static void afterAll() {
@@ -46,8 +48,11 @@ public class TestApp {
 
     @BeforeEach
     final void beforeEach() {
-        database.script().run("/truncate.sql");
-        database.script().run("/seed-test-db.sql");
+        transaction = DB.beginTransaction();
+    }
+    @AfterEach
+    final void afterEach() {
+        transaction.rollback();
     }
 
     @Nested

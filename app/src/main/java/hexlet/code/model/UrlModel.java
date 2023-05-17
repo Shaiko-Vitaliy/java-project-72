@@ -46,7 +46,13 @@ public class UrlModel extends Model {
     }
 
     public final List<UrlCheck> getUrlChecks() {
-        return urlChecks;
+        return this.urlChecks;
+    }
+
+    public final List<UrlCheck> getReverseUrlChecks() {
+        var result = this.urlChecks;
+        Collections.reverse(result);
+        return result;
     }
 
     public final UrlCheck getLastUrlChecks() {

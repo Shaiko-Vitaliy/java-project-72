@@ -40,14 +40,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="check : ${checks}" th:object="${check}">
+                <tr th:each="check : ${url.getReverseUrlChecks()}" th:object="${check}">
                     <td th:text="*{getId()}"></td>
                     <td th:text="*{getStatusCode()}"></td>
                     <td th:text="*{getTitle()}"></td>
                     <td th:text="*{getH1()}"></td>
                     <td th:text="*{getDescription()}"></td>
                     <td th:text="${#temporals.format(check.getCreatedAt(), 'dd/MM/yyyy HH:mm')}"></td>
-<!--                    <td th:text="*{getCreatedAt()}"></td>-->
                 </tr>
                 </tbody>
             </table>

@@ -10,7 +10,6 @@ import kong.unirest.UnirestException;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -50,25 +49,25 @@ public class UrlsController {
         var inputContent = ctx.formParam("url");
         assert inputContent != null;
         inputContent = inputContent.strip();
-        var correctUrl = getNormalizedUrl(inputContent);
-        if (correctUrl.isEmpty()) {
+        var validateUrl = getNormalizedUrl(inputContent);
+        if (validateUrl.isEmpty()) {
             ctx.status(STATUS_INCORRECT_URL);
             ctx.sessionAttribute("flash", "Некорректный URL");
             ctx.sessionAttribute("alert", "alert alert-danger");
             ctx.redirect("/");
             return;
         }
-        UrlModel isCorrectUrl = new QUrlModel()
-                .url.equalTo(correctUrl)
+        UrlModel verificationOfExistence = new QUrlModel()
+                .url.equalTo(validateUrl)
                 .findOne();
-        if (isCorrectUrl != null) {
+        if (verificationOfExistence != null) {
             ctx.status(STATUS_INCORRECT_URL);
             ctx.sessionAttribute("flash", "Страница уже существует");
             ctx.sessionAttribute("alert", "alert alert-info");
             ctx.redirect("/urls");
             return;
         }
-        UrlModel urlModel = new UrlModel(correctUrl);
+        UrlModel urlModel = new UrlModel(validateUrl);
         urlModel.save();
         ctx.sessionAttribute("flash", "Страница успешно добавлена");
         ctx.sessionAttribute("alert", "alert alert-success");
@@ -84,10 +83,7 @@ public class UrlsController {
         if (urlModel == null) {
             throw new NotFoundResponse();
         }
-        List<UrlCheck> checks = urlModel.getUrlChecks();
-        Collections.reverse(checks);
         ctx.attribute("url", urlModel);
-        ctx.attribute("checks", checks);
         ctx.render("/urls/showUrl.html");
     };
 
@@ -115,7 +111,10 @@ public class UrlsController {
             ctx.sessionAttribute("flash", "Страница успешно проверена");
             ctx.sessionAttribute("alert", "alert alert-success");
         } catch (UnirestException e) {
-            ctx.sessionAttribute("flash", "Не удалось проверить страницу");
+            ctx.sessionAttribute("flash", "Некорректный адрес");
+            ctx.sessionAttribute("alert", "alert alert-danger");
+        }  catch (RuntimeException e) {
+            ctx.sessionAttribute("flash", "Произошла ошибка, повторите ещё раз или измените запрос");
             ctx.sessionAttribute("alert", "alert alert-danger");
         }
         ctx.redirect("/urls/" + id);

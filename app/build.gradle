@@ -4,15 +4,22 @@ plugins {
     id 'jacoco'
     id 'com.adarshr.test-logger' version '3.2.0'
     id 'application'
-    id 'io.ebean' version '13.6.5'
-    id 'com.github.ben-manes.versions' version '0.39.0'
+    id 'io.ebean' version '13.17.4'
+    id 'com.github.ben-manes.versions' version '0.42.0'
 }
 
 group = 'hexlet.code'
 version = '1.0-SNAPSHOT'
+sourceCompatibility = '20'
+targetCompatibility = 20
 
 repositories {
     mavenCentral()
+}
+
+wrapper {
+    gradleVersion = '8.3'
+    distributionType = Wrapper.DistributionType.ALL
 }
 
 application {
@@ -20,45 +27,44 @@ application {
 }
 
 compileJava {
-    options.release = 17
+    options.release = 20
     options.encoding = 'UTF-8'
 }
 
 dependencies {
-    implementation 'io.javalin:javalin:4.0.1'
-    implementation 'org.thymeleaf:thymeleaf:3.0.12.RELEASE'
-    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.0.0'
-    implementation 'org.thymeleaf.extras:thymeleaf-extras-java8time:3.0.4.RELEASE'
-    implementation 'org.webjars:bootstrap:5.1.1'
+    implementation 'io.javalin:javalin:5.6.1'
+    implementation 'io.javalin:javalin-rendering:5.6.0'
+    implementation 'org.slf4j:slf4j-simple:2.0.7'
 
-    implementation 'org.slf4j:slf4j-simple:1.7.36'
-    implementation 'org.jsoup:jsoup:1.15.4'
-
-    implementation 'commons-validator:commons-validator:1.7'
-    implementation 'org.apache.commons:commons-lang3:3.12.0'
-
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-
-    implementation 'io.ebean:ebean:13.6.5'
-    implementation 'io.ebean:ebean-ddl-generator:13.6.5'
-    implementation 'io.ebean:ebean-querybean:13.6.5'
-    implementation 'io.ebean:ebean-migration:13.6.0'
-    implementation 'io.ebean:ebean-annotation:8.3'
-    annotationProcessor 'io.ebean:querybean-generator:13.6.5'
-    testImplementation 'io.ebean:ebean-test:12.11.5'
-
-    implementation 'com.h2database:h2:1.4.200'
-    implementation 'org.postgresql:postgresql:42.3.3'
+    implementation 'io.ebean:ebean:13.20.1'
+    implementation 'io.ebean:ebean-querybean:13.20.1'
+    implementation 'io.ebean:ebean-annotation:8.4'
+    implementation 'io.ebean:ebean-migration:13.9.0'
+    implementation 'io.ebean:ebean-ddl-generator:13.20.1'
+    annotationProcessor 'io.ebean:querybean-generator:13.20.1'
 
     implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.5'
     implementation 'javax.activation:activation:1.1.1'
-    implementation 'javax.persistence:javax.persistence-api:2.2'
-    testImplementation 'com.konghq:unirest-java:3.14.1'
-    implementation 'com.konghq:unirest-java:3.14.1'
 
-    testImplementation 'com.squareup.okhttp3:mockwebserver:4.10.0'
+    implementation 'com.h2database:h2:2.2.220'
+    implementation 'org.postgresql:postgresql:42.6.0'
+
+    implementation 'org.thymeleaf:thymeleaf:3.1.1.RELEASE'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.2.1'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-java8time:3.0.4.RELEASE'
+    implementation 'org.webjars:bootstrap:5.3.0'
+
+    implementation 'com.konghq:unirest-java:3.14.5'
+    implementation 'org.jsoup:jsoup:1.16.1'
+
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.9.2'
+    testImplementation 'org.assertj:assertj-core:3.24.2'
+    testImplementation 'io.ebean:ebean-test:13.20.1'
+    testImplementation 'com.konghq:unirest-java:3.14.5'
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.11.0'
 }
+
 
 run {
     standardInput = System.in

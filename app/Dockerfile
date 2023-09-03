@@ -5,8 +5,8 @@ ARG GRADLE_VERSION=8.3
 WORKDIR /app
 
 COPY gradle gradle
-COPY build.gradle.kts .
-COPY settings.gradle.kts .
+COPY build.gradle .
+COPY settings.gradle .
 COPY gradlew .
 
 RUN ./gradlew --no-daemon dependencies

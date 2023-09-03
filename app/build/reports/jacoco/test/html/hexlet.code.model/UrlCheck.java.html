@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UrlCheck.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">app</a> &gt; <a href="index.source.html" class="el_package">hexlet.code.model</a> &gt; <span class="el_source">UrlCheck.java</span></div><h1>UrlCheck.java</h1><pre class="source lang-java linenums"><span class="fc" id="L1">package hexlet.code.model;</span>
+<span class="nc" id="L2"></span>
+<span class="nc" id="L3">import io.ebean.Model;</span>
+<span class="nc" id="L4">import io.ebean.annotation.WhenCreated;</span>
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import java.time.Instant;
+
+@Entity
+public class UrlCheck extends Model {
+    @Id
+    private Long id;
+    private int statusCode;
+    @WhenCreated
+    private Instant createdAt;
+    private String title;
+    private String h1;
+    @Lob
+    private String description;
+    @ManyToOne
+    private UrlModel url;
+
+    public UrlCheck(int inputStatusCode, String inputTitle, String inputH1, String inputDescription,
+<span class="fc" id="L27">                    UrlModel inputUrl) {</span>
+<span class="fc" id="L28">        this.statusCode = inputStatusCode;</span>
+<span class="fc" id="L29">        this.title = inputTitle;</span>
+<span class="fc" id="L30">        this.h1 = inputH1;</span>
+<span class="fc" id="L31">        this.description = inputDescription;</span>
+<span class="fc" id="L32">        this.url = inputUrl;</span>
+<span class="fc" id="L33">    }</span>
+
+    public final Long getId() {
+<span class="fc" id="L36">        return id;</span>
+    }
+
+    public final int getStatusCode() {
+<span class="fc" id="L40">        return statusCode;</span>
+    }
+
+    public final Instant getCreatedAt() {
+<span class="fc" id="L44">        return createdAt;</span>
+    }
+
+    public final String getTitle() {
+<span class="fc" id="L48">        return title;</span>
+    }
+
+    public final String getH1() {
+<span class="fc" id="L52">        return h1;</span>
+    }
+
+    public final String getDescription() {
+<span class="fc" id="L56">        return description;</span>
+    }
+
+    public final UrlModel getUrl() {
+<span class="fc" id="L60">        return url;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

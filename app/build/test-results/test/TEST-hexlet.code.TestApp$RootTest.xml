@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hexlet.code.TestApp$RootTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-09-03T07:38:54" hostname="New-Victus-Laptop-16-e0xxx" time="0.015">
+  <properties/>
+  <testcase name="testIndex()" classname="hexlet.code.TestApp$RootTest" time="0.015"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[[JettyServerThreadPool-56] INFO io.javalin.Javalin - JAVALIN REQUEST DEBUG LOG:
+Request: GET [/]
+    Matching endpoint-handlers: [BEFORE=*, GET=/]
+    Headers: {Cookie=JSESSIONID=node011j3lpievixjw1qfizwtqsl94w0.node0, User-Agent=unirest-java/3.1.00, Connection=keep-alive, Host=localhost:41773, Accept-Encoding=gzip}
+    Cookies: {JSESSIONID=node011j3lpievixjw1qfizwtqsl94w0.node0}
+    Body: 
+    QueryString: null
+    QueryParams: {}
+    FormParams: {}
+Response: [200 OK], execution took 10.90 ms
+    Headers: {Content-Encoding=gzip, Date=Sun, 03 Sep 2023 07:38:54 GMT, Content-Type=text/html}
+    Body is gzipped (2730 bytes, not logged)
+----------------------------------------------------------------------------------
+]]></system-err>
+</testsuite>

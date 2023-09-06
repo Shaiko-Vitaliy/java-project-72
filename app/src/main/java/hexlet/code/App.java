@@ -3,7 +3,6 @@ package hexlet.code;
 import hexlet.code.controlles.RootController;
 import hexlet.code.controlles.UrlsController;
 import io.javalin.Javalin;
-//import io.javalin.plugin.rendering.template.JavalinThymeleaf;
 import io.javalin.rendering.template.JavalinThymeleaf;
 import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect;
 import org.thymeleaf.TemplateEngine;
@@ -60,11 +59,8 @@ public class App {
     public static Javalin getApp() {
         Javalin app = Javalin.create(config -> {
             if (!isProduction()) {
-//                config.enableDevLogging();
                 config.plugins.enableDevLogging();
             }
-//            config.enableWebjars();
-//            JavalinThymeleaf.configure(getTemplateEngine());
             JavalinThymeleaf.init(getTemplateEngine());
         });
         addRoutes(app);

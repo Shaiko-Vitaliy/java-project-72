@@ -72,7 +72,6 @@ run {
 
 test {
     useJUnitPlatform()
-//    finalizedBy jacocoTestReport
 }
 
 jacocoTestReport {

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="hexlet.code.TestApp$RootTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-09-12T19:52:32" hostname="New-Victus-Laptop-16-e0xxx" time="0.018">
+<testsuite name="hexlet.code.TestApp$RootTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-09-12T20:20:03" hostname="New-Victus-Laptop-16-e0xxx" time="0.017">
   <properties/>
-  <testcase name="testIndex()" classname="hexlet.code.TestApp$RootTest" time="0.018"/>
+  <testcase name="testIndex()" classname="hexlet.code.TestApp$RootTest" time="0.017"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[[JettyServerThreadPool-59] INFO io.javalin.Javalin - JAVALIN REQUEST DEBUG LOG:
 Request: GET [/]
     Matching endpoint-handlers: [BEFORE=*, GET=/]
-    Headers: {Cookie=JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0, User-Agent=unirest-java/3.1.00, Connection=keep-alive, Host=localhost:44535, Accept-Encoding=gzip}
-    Cookies: {JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0}
+    Headers: {Cookie=JSESSIONID=node017ijv0ekz9fk2udayg6u361v50.node0, User-Agent=unirest-java/3.1.00, Connection=keep-alive, Host=localhost:41513, Accept-Encoding=gzip}
+    Cookies: {JSESSIONID=node017ijv0ekz9fk2udayg6u361v50.node0}
     Body: 
     QueryString: null
     QueryParams: {}
     FormParams: {}
-Response: [200 OK], execution took 12.03 ms
-    Headers: {Content-Encoding=gzip, Date=Tue, 12 Sep 2023 19:52:32 GMT, Content-Type=text/html}
+Response: [200 OK], execution took 11.40 ms
+    Headers: {Content-Encoding=gzip, Date=Tue, 12 Sep 2023 20:20:03 GMT, Content-Type=text/html}
     Body is gzipped (2985 bytes, not logged)
 ----------------------------------------------------------------------------------
 ]]></system-err>

@@ -12,8 +12,8 @@
 [Test worker] INFO org.eclipse.jetty.server.Server - jetty-11.0.15; built: 2023-04-11T18:37:53.775Z; git: 5bc5e562c8d05c5862505aebe5cf83a61bdbcb96; jvm 20.0.1+9-29
 [Test worker] INFO org.eclipse.jetty.server.session.DefaultSessionIdManager - Session workerName=node0
 [Test worker] INFO org.eclipse.jetty.server.handler.ContextHandler - Started i.j.j.@26d7cb0d{/,null,AVAILABLE}
-[Test worker] INFO org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@6ba0ee4a{HTTP/1.1, (http/1.1)}{0.0.0.0:44535}
-[Test worker] INFO org.eclipse.jetty.server.Server - Started Server@e7b0bec{STARTING}[11.0.15,sto=0] @2448ms
+[Test worker] INFO org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@6ba0ee4a{HTTP/1.1, (http/1.1)}{0.0.0.0:41513}
+[Test worker] INFO org.eclipse.jetty.server.Server - Started Server@e7b0bec{STARTING}[11.0.15,sto=0] @1754ms
 [Test worker] INFO io.javalin.Javalin - 
        __                  ___          ______
       / /___ __   ______ _/ (_)___     / ____/
@@ -23,18 +23,18 @@
 
        https://javalin.io/documentation
 
-[Test worker] INFO io.javalin.Javalin - Listening on http://localhost:44535/
+[Test worker] INFO io.javalin.Javalin - Listening on http://localhost:41513/
 [Test worker] INFO io.javalin.Javalin - You are running Javalin 5.5.0 (released May 1, 2023. Your Javalin version is 134 days old. Consider checking for a newer version.).
-[Test worker] INFO io.javalin.Javalin - Javalin started in 417ms \o/
+[Test worker] INFO io.javalin.Javalin - Javalin started in 283ms \o/
 [Test worker] INFO io.ebean - ebean version: 13.20.1
 [Test worker] INFO io.avaje.config - Loaded properties from [resource:application.yaml, resource:application-test.yaml] 
 [ForkJoinPool.commonPool-worker-2] INFO io.ebean.test - Using jdbc settings - username:sa url:jdbc:h2:mem:test driver:org.h2.Driver
 [Test worker] INFO io.ebean.test - For testing purposes a current user provider has been configured. Use io.ebean.test.UserContext to set current user in tests.
-[Test worker] INFO io.ebean.datasource - DataSource [development] autoCommit[false] transIsolation[READ_COMMITTED] min[2] max[200] in[503ms]
+[Test worker] INFO io.ebean.datasource - DataSource [development] autoCommit[false] transIsolation[READ_COMMITTED] min[2] max[200] in[330ms]
 [Test worker] INFO io.ebean.DDL - Executing development-drop-all.sql - 4 statements, autoCommit:true
 [Test worker] INFO io.ebean.DDL - Executing development-create-all.sql - 4 statements, autoCommit:false
 [Test worker] INFO io.ebean.DDL - Executing seed-test-db.sql - 1 statements, autoCommit:false
-[Test worker] INFO io.ebean.core - Started database[development] platform[H2] in 1 043ms
+[Test worker] INFO io.ebean.core - Started database[development] platform[H2] in 839ms
 [Test worker] INFO io.javalin.Javalin - Stopping Javalin ...
 [Test worker] INFO org.eclipse.jetty.server.Server - Stopped Server@e7b0bec{STOPPING}[11.0.15,sto=0]
 [Test worker] INFO org.eclipse.jetty.server.AbstractConnector - Stopped ServerConnector@6ba0ee4a{HTTP/1.1, (http/1.1)}{0.0.0.0:0}

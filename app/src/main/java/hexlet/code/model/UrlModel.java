@@ -4,7 +4,6 @@ import io.ebean.Model;
 import io.ebean.annotation.NotNull;
 import io.ebean.annotation.WhenCreated;
 
-//import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,7 +15,6 @@ import java.util.Collections;
 import java.util.List;
 
 @Entity
-//@Table(name = "url")
 @Table(name = "urls")
 public class UrlModel extends Model {
 
@@ -27,7 +25,6 @@ public class UrlModel extends Model {
     private final String url;
     @WhenCreated
     private Instant createdAt;
-//    @OneToMany(cascade = CascadeType.ALL)
     @OneToMany(mappedBy = "url")
     private List<UrlCheck> urlChecks;
 

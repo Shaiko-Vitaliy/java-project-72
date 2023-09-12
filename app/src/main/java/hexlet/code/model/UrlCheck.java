@@ -22,7 +22,6 @@ public class UrlCheck extends Model {
     private Instant createdAt;
     private String title;
     private String h1;
-//    @Lob
     @Column(columnDefinition = "TEXT")
     private String description;
     @ManyToOne

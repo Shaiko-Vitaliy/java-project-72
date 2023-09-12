@@ -3,24 +3,25 @@ package hexlet.code.model;
 import io.ebean.Model;
 import io.ebean.annotation.WhenCreated;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.Instant;
 
 @Entity
+@Table(name = "url_checks")
 public class UrlCheck extends Model {
     @Id
     private Long id;
+    @Column(name = "status_code")
     private int statusCode;
     @WhenCreated
     private Instant createdAt;
     private String title;
     private String h1;
-    @Lob
+//    @Lob
+    @Column(columnDefinition = "TEXT")
     private String description;
     @ManyToOne
+    @JoinColumn(name = "url_id", referencedColumnName = "id")
     private UrlModel url;
 
     public UrlCheck(int inputStatusCode, String inputTitle, String inputH1, String inputDescription,

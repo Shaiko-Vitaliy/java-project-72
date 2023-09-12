@@ -24,6 +24,18 @@ public class App {
         return System.getenv().getOrDefault("APP_ENV", "development");
     }
 
+    private static String getJdbcUrl() {
+        return System.getenv().getOrDefault("JDBC_DATABASE_URL", "jdbc:h2:./hexlet");
+    }
+
+    private static void setMode() {
+        System.setProperty("APP_ENV", getMode());
+    }
+
+    private static void setJdbcUrl() {
+        System.setProperty("JDBC_DATABASE_URL", getJdbcUrl());
+    }
+
     private static boolean isProduction() {
         return getMode().equals("production");
     }
@@ -57,6 +69,8 @@ public class App {
     }
 
     public static Javalin getApp() {
+        setMode();
+        setJdbcUrl();
         Javalin app = Javalin.create(config -> {
             if (!isProduction()) {
                 config.plugins.enableDevLogging();
@@ -65,7 +79,7 @@ public class App {
         });
         addRoutes(app);
         app.before(ctx -> {
-            ctx.attribute("ctx", ctx);
+            ctx.attribute("ctx", ctx);   //???????????????????
         });
         return app;
     }

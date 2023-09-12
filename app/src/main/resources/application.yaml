@@ -4,14 +4,15 @@ datasource:
   development:
     username: ""
     password: ""
-    url: "jdbc:h2:./hexlet"
+    url: ${JDBC_DATABASE_URL}
+#    url: "jdbc:h2:./hexlet"
 
   production:
      username: ${JDBC_DATABASE_USERNAME}
      password: ${JDBC_DATABASE_PASSWORD}
      url: ${JDBC_DATABASE_URL}
 
-ebean:
-  ddl:
-    run: true
-    generate: true
+#ebean:
+#  ddl:
+#    run: true
+#    generate: true

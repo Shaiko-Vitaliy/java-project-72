@@ -16,7 +16,8 @@ import java.util.Collections;
 import java.util.List;
 
 @Entity
-@Table(name = "url")
+//@Table(name = "url")
+@Table(name = "urls")
 public class UrlModel extends Model {
 
     @Id
@@ -26,7 +27,8 @@ public class UrlModel extends Model {
     private final String url;
     @WhenCreated
     private Instant createdAt;
-    @OneToMany(cascade = CascadeType.ALL)
+//    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "url")
     private List<UrlCheck> urlChecks;
 
     public UrlModel(String inputUrl) {

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hexlet.code.TestApp$UrlTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2023-09-12T19:52:30" hostname="New-Victus-Laptop-16-e0xxx" time="1.659">
+  <properties/>
+  <testcase name="addExistingUrl()" classname="hexlet.code.TestApp$UrlTest" time="1.309"/>
+  <testcase name="testIncorrectUrl()" classname="hexlet.code.TestApp$UrlTest" time="0.048"/>
+  <testcase name="testCheck()" classname="hexlet.code.TestApp$UrlTest" time="0.206"/>
+  <testcase name="testUrlList()" classname="hexlet.code.TestApp$UrlTest" time="0.033"/>
+  <testcase name="testCreateUrl()" classname="hexlet.code.TestApp$UrlTest" time="0.035"/>
+  <testcase name="showUrl()" classname="hexlet.code.TestApp$UrlTest" time="0.023"/>
+  <system-out><![CDATA[<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Анализатор страниц</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Анализатор страниц</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">Главная</a>
+                <a class="nav-link" href="/urls">Сайты</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<main class="flex-grow-1">
+    <div role="alert"
+            class="rounded-0 m-0 alert alert-dismissible fade show alert alert-success"
+    >
+        <p class="m-0">Страница успешно проверена</p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <section>
+        <div class="container-lg mt-5">
+            <h1 >Сайт <span>http://localhost:49369</span></h1>
+            <table class="table table-bordered table-hover mt-3">
+                <tbody>
+                <tr>
+                    <td>ID</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Имя</td>
+                    <td>http://localhost:49369</td>
+                </tr>
+                <tr>
+                    <td>Дата создания</td>
+                    <td>12/09/2023 22:52</td>
+                </tr>
+                </tbody>
+            </table>
+                <h1 class="mt-5">Проверки</h1>
+                <form method="post" enctype="application/x-www-form-urlencoded" action="/urls/3/checks">
+                    <button class="btn btn-primary" type="submit">Запустить проверку</button>
+                </form>
+            <table class="table table-bordered table-hover mt-3">
+                <thead>
+                <tr>
+                    <th class="col-1">ID</th>
+                    <th class="col-1">Код ответа</th>
+                    <th>title</th>
+                    <th>h1</th>
+                    <th>description</th>
+                    <th class="col-2">Дата проверки</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>200</td>
+                    <td>correct title</td>
+                    <td>correct header</td>
+                    <td>correct description</td>
+                    <td>12/09/2023 22:52</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+</section>
+</main>
+<footer class="footer border-top py-3 mt-5 bg-light">
+    <div class="container-xl">
+        <div class="text-center">
+            created by
+            <a href="https://github.com/Shaiko-Vitaliy" target="_blank">Shaiko Vitaliy</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
+]]></system-out>
+  <system-err><![CDATA[[JettyServerThreadPool-59] INFO io.javalin.Javalin - JAVALIN REQUEST DEBUG LOG:
+Request: POST [/urls]
+    Matching endpoint-handlers: [BEFORE=*, POST=/urls]
+    Headers: {User-Agent=unirest-java/3.1.00, Connection=keep-alive, Host=localhost:44535, Accept-Encoding=gzip, Content-Length=30, Content-Type=application/x-www-form-urlencoded; charset=UTF-8}
+    Cookies: {}
+    Body: url=https%3A%2F%2Fru.hexlet.io
+    QueryString: null
+    QueryParams: {}
+    FormParams: {url=[https://ru.hexlet.io]}
+Response: [302 Found], execution took 97.82 ms
+    Headers: {Set-Cookie=JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0; Path=/; HttpOnly; SameSite=Lax, Expires=Thu, 01 Jan 1970 00:00:00 GMT, Date=Tue, 12 Sep 2023 19:52:30 GMT, Content-Type=text/plain, Location=/urls}
+    Body is 10 bytes (starts on next line):
+    Redirected
+----------------------------------------------------------------------------------
+[JettyServerThreadPool-36] INFO io.javalin.Javalin - JAVALIN REQUEST DEBUG LOG:
+Request: GET [/urls]
+    Matching endpoint-handlers: [BEFORE=*, GET=/urls]
+    Headers: {Cookie=JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0, User-Agent=unirest-java/3.1.00, Connection=keep-alive, Host=localhost:44535, Accept-Encoding=gzip}
+    Cookies: {JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0}
+    Body: 
+    QueryString: null
+    QueryParams: {}
+    FormParams: {}
+Response: [200 OK], execution took 789.52 ms
+    Headers: {Content-Encoding=gzip, Date=Tue, 12 Sep 2023 19:52:31 GMT, Content-Type=text/html}
+    Body is gzipped (3499 bytes, not logged)
+----------------------------------------------------------------------------------
+[JettyServerThreadPool-42] INFO io.javalin.Javalin - JAVALIN REQUEST DEBUG LOG:
+Request: POST [/urls]
+    Matching endpoint-handlers: [BEFORE=*, POST=/urls]
+    Headers: {Cookie=JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0, User-Agent=unirest-java/3.1.00, Connection=keep-alive, Host=localhost:44535, Accept-Encoding=gzip, Content-Length=8, Content-Type=application/x-www-form-urlencoded; charset=UTF-8}
+    Cookies: {JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0}
+    Body: url=test
+    QueryString: null
+    QueryParams: {}
+    FormParams: {url=[test]}
+Response: [302 Found], execution took 0.79 ms
+    Headers: {Date=Tue, 12 Sep 2023 19:52:31 GMT, Content-Type=text/plain, Location=/}
+    Body is 10 bytes (starts on next line):
+    Redirected
+----------------------------------------------------------------------------------
+[JettyServerThreadPool-59] INFO io.javalin.Javalin - JAVALIN REQUEST DEBUG LOG:
+Request: GET [/]
+    Matching endpoint-handlers: [BEFORE=*, GET=/]
+    Headers: {Cookie=JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0, User-Agent=unirest-java/3.1.00, Connection=keep-alive, Host=localhost:44535, Accept-Encoding=gzip}
+    Cookies: {JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0}
+    Body: 
+    QueryString: null
+    QueryParams: {}
+    FormParams: {}
+Response: [200 OK], execution took 37.04 ms
+    Headers: {Content-Encoding=gzip, Date=Tue, 12 Sep 2023 19:52:31 GMT, Content-Type=text/html}
+    Body is gzipped (3251 bytes, not logged)
+----------------------------------------------------------------------------------
+[JettyServerThreadPool-42] INFO io.javalin.Javalin - JAVALIN REQUEST DEBUG LOG:
+Request: POST [/urls/]
+    Matching endpoint-handlers: [BEFORE=*, POST=/urls]
+    Headers: {Cookie=JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0, User-Agent=unirest-java/3.1.00, Connection=keep-alive, Host=localhost:44535, Accept-Encoding=gzip, Content-Length=37, Content-Type=application/x-www-form-urlencoded; charset=UTF-8}
+    Cookies: {JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0}
+    Body: url=http%3A%2F%2Flocalhost%3A49369%2F
+    QueryString: null
+    QueryParams: {}
+    FormParams: {url=[http://localhost:49369/]}
+Response: [302 Found], execution took 13.85 ms
+    Headers: {Date=Tue, 12 Sep 2023 19:52:32 GMT, Content-Type=text/plain, Location=/urls}
+    Body is 10 bytes (starts on next line):
+    Redirected
+----------------------------------------------------------------------------------
+[JettyServerThreadPool-59] INFO io.javalin.Javalin - JAVALIN REQUEST DEBUG LOG:
+Request: POST [/urls/3/checks]
+    Matching endpoint-handlers: [BEFORE=*, POST=/urls/{id}/checks]
+    Headers: {Cookie=JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0, User-Agent=unirest-java/3.1.00, Connection=keep-alive, Host=localhost:44535, Accept-Encoding=gzip, Content-Length=0}
+    Cookies: {JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0}
+    Body: 
+    QueryString: null
+    QueryParams: {}
+    FormParams: {}
+Response: [302 Found], execution took 84.01 ms
+    Headers: {Date=Tue, 12 Sep 2023 19:52:32 GMT, Content-Type=text/plain, Location=/urls/3}
+    Body is 10 bytes (starts on next line):
+    Redirected
+----------------------------------------------------------------------------------
+[JettyServerThreadPool-42] INFO io.javalin.Javalin - JAVALIN REQUEST DEBUG LOG:
+Request: GET [/urls/3]
+    Matching endpoint-handlers: [BEFORE=*, GET=/urls/{id}]
+    Headers: {Cookie=JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0, User-Agent=unirest-java/3.1.00, Connection=keep-alive, Host=localhost:44535, Accept-Encoding=gzip}
+    Cookies: {JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0}
+    Body: 
+    QueryString: null
+    QueryParams: {}
+    FormParams: {}
+Response: [200 OK], execution took 33.08 ms
+    Headers: {Content-Encoding=gzip, Date=Tue, 12 Sep 2023 19:52:32 GMT, Content-Type=text/html}
+    Body is gzipped (3707 bytes, not logged)
+----------------------------------------------------------------------------------
+[JettyServerThreadPool-59] INFO io.javalin.Javalin - JAVALIN REQUEST DEBUG LOG:
+Request: GET [/urls]
+    Matching endpoint-handlers: [BEFORE=*, GET=/urls]
+    Headers: {Cookie=JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0, User-Agent=unirest-java/3.1.00, Connection=keep-alive, Host=localhost:44535, Accept-Encoding=gzip}
+    Cookies: {JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0}
+    Body: 
+    QueryString: null
+    QueryParams: {}
+    FormParams: {}
+Response: [200 OK], execution took 27.39 ms
+    Headers: {Content-Encoding=gzip, Date=Tue, 12 Sep 2023 19:52:32 GMT, Content-Type=text/html}
+    Body is gzipped (3481 bytes, not logged)
+----------------------------------------------------------------------------------
+[JettyServerThreadPool-42] INFO io.javalin.Javalin - JAVALIN REQUEST DEBUG LOG:
+Request: POST [/urls]
+    Matching endpoint-handlers: [BEFORE=*, POST=/urls]
+    Headers: {Cookie=JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0, User-Agent=unirest-java/3.1.00, Connection=keep-alive, Host=localhost:44535, Accept-Encoding=gzip, Content-Length=33, Content-Type=application/x-www-form-urlencoded; charset=UTF-8}
+    Cookies: {JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0}
+    Body: url=https%3A%2F%2Fwww.example.com
+    QueryString: null
+    QueryParams: {}
+    FormParams: {url=[https://www.example.com]}
+Response: [302 Found], execution took 2.34 ms
+    Headers: {Date=Tue, 12 Sep 2023 19:52:32 GMT, Content-Type=text/plain, Location=/urls}
+    Body is 10 bytes (starts on next line):
+    Redirected
+----------------------------------------------------------------------------------
+[JettyServerThreadPool-59] INFO io.javalin.Javalin - JAVALIN REQUEST DEBUG LOG:
+Request: GET [/urls]
+    Matching endpoint-handlers: [BEFORE=*, GET=/urls]
+    Headers: {Cookie=JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0, User-Agent=unirest-java/3.1.00, Connection=keep-alive, Host=localhost:44535, Accept-Encoding=gzip}
+    Cookies: {JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0}
+    Body: 
+    QueryString: null
+    QueryParams: {}
+    FormParams: {}
+Response: [200 OK], execution took 21.89 ms
+    Headers: {Content-Encoding=gzip, Date=Tue, 12 Sep 2023 19:52:32 GMT, Content-Type=text/html}
+    Body is gzipped (3998 bytes, not logged)
+----------------------------------------------------------------------------------
+[JettyServerThreadPool-42] INFO io.javalin.Javalin - JAVALIN REQUEST DEBUG LOG:
+Request: GET [/urls/1]
+    Matching endpoint-handlers: [BEFORE=*, GET=/urls/{id}]
+    Headers: {Cookie=JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0, User-Agent=unirest-java/3.1.00, Connection=keep-alive, Host=localhost:44535, Accept-Encoding=gzip}
+    Cookies: {JSESSIONID=node01xd17gvfgrf2kdmd8w6imvqkg0.node0}
+    Body: 
+    QueryString: null
+    QueryParams: {}
+    FormParams: {}
+Response: [200 OK], execution took 19.00 ms
+    Headers: {Content-Encoding=gzip, Date=Tue, 12 Sep 2023 19:52:32 GMT, Content-Type=text/html}
+    Body is gzipped (3146 bytes, not logged)
+----------------------------------------------------------------------------------
+]]></system-err>
+</testsuite>

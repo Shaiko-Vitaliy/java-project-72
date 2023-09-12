@@ -4,7 +4,7 @@ import io.ebean.Model;
 import io.ebean.annotation.NotNull;
 import io.ebean.annotation.WhenCreated;
 
-import javax.persistence.CascadeType;
+//import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
